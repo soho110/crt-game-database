@@ -1,0 +1,35 @@
+# Pixel Games - arcade_15 candidate modeline commands
+# Target preset: arcade_15 (15.625-16.200 kHz; 49.50-65.00 Hz)
+# IMPORTANT: This is a VMMaker command-list text file, NOT a raw Xorg modeline file.
+# Review each mode before installing. Test on a known-safe CRT setup at low brightness.
+#
+# All modes use a 240-line progressive active raster and 261 total lines.
+# Horizontal geometry is calculated using arcade_15 nominal porch values:
+# H front porch 2.000 us, sync 4.700 us, back porch remainder ~8.000 us.
+# Target H frequency ~15.700 kHz; resulting refresh ~60.15 Hz.
+#
+# The active width corresponds to selected reported source widths, but this DOES NOT
+# prove that a given game renders at that resolution. Nor does a 240-line output
+# make a 180/216-line source fill 240 lines: preserve 1:1 by centering the source
+# image in the 240-line raster and leaving unused scanlines blank.
+#
+# These commands create only candidate CRT modes. They do not change a game's
+# internal render target, disable scaling, or automatically center/crop game output.
+# Do not use modes unless your exact CRT/TV, GPU, driver and sync chain are known
+# to accept them. arcade_15 is an arcade-monitor timing range, not a universal TV
+# safety certification.
+#
+# In VMMaker, use the command-line mode add syntax supported by your installed
+# version. If your VMMaker build expects a different import format, enter commands
+# individually rather than importing this file as an arbitrary modeline list.
+#
+mode add "320x240_60.15 15.70KHz 60.15Hz" 6.531 320 333 364 416 240 242 245 261 -hsync -vsync
+mode add "384x240_60.15 15.70KHz 60.15Hz" 7.838 384 400 437 499 240 242 245 261 -hsync -vsync
+mode add "400x240_60.15 15.70KHz 60.15Hz" 8.164 400 416 454 520 240 242 245 261 -hsync -vsync
+mode add "420x240_60.15 15.70KHz 60.15Hz" 8.572 420 437 477 546 240 242 245 261 -hsync -vsync
+mode add "424x240_60.15 15.70KHz 60.15Hz" 8.654 424 441 482 551 240 242 245 261 -hsync -vsync
+mode add "427x240_60.15 15.70KHz 60.15Hz" 8.715 427 444 485 555 240 242 245 261 -hsync -vsync
+mode add "480x240_60.15 15.70KHz 60.15Hz" 9.797 480 500 546 624 240 242 245 261 -hsync -vsync
+
+# 270-line progressive option for reported 480x270 source canvases (54.51 Hz).
+mode add "480x270_54.51 15.70KHz 54.51Hz" 9.797 480 500 546 624 270 272 275 288 -hsync -vsync

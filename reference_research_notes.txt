@@ -1,0 +1,89 @@
+PIXEL GAMES / CRT EMUDRIVER / VMMaker
+=====================================
+
+Release: 0.1 research seed
+Target monitor preset: arcade_15
+Target display: 15 kHz consumer CRT (NTSC-class use case)
+
+FILES
+-----
+Pixel_Games_Arcade15_Modelines.txt
+  Candidate VMMaker `mode add` commands. This is deliberately not described as
+  a raw XFree86 modeline file. VMMaker's command-line syntax is used.
+
+Pixel_Games_Resolution_Database.csv
+  Starter catalogue of PC 2D/pixel-art titles from 2010 onward. Resolutions
+  are marked VERIFY unless a published/community-reported candidate was found.
+  Community-reported values are not equivalent to a confirmed runtime framebuffer.
+
+IMPORTANT DISPLAY / PIXEL-MAPPING FACTS
+---------------------------------------
+1. A consumer CRT has no fixed pixel grid. "1:1" here means one source texel maps
+   to one active output sample/scanline in the video signal, with no non-integer
+   scaling performed by the game, GPU, compositor, or capture/output path.
+2. arcade_15 range used as reference:
+   H frequency 15.625-16.200 kHz; V frequency 49.50-65.00 Hz;
+   horizontal porch geometry 2.000 / 4.700 / 8.000 us;
+   progressive line range 192-288; interlaced line range 448-576.
+3. The included candidates use 240 active lines, 261 total lines, and ~60.15 Hz.
+   The active widths are 320, 384, 400, 420, 424, 427, and 480.
+4. Source heights below 240 can be centered in a 240-line raster while preserving
+   source scanlines (e.g. 320x180 within 320x240 with 30 blank lines top/bottom).
+   The game must actually render at the source resolution and the output path must
+   avoid scaling. Many games do not expose their internal framebuffer size.
+5. Source heights above 288 cannot be represented as a single progressive frame
+   within this arcade_15 progressive range. Interlace is not a transparent
+   substitute for progressive pixel-perfect mapping; it changes field structure.
+6. Widths below 320 are not included as native-width modes because low pixel-clock
+   / GPU mode acceptance varies. A 256-wide source needs a separate validated
+   strategy (often a wide/super-resolution output with integer scaling), which is
+   not literally a 256-pixel-wide output mode.
+
+HOW TO USE
+----------
+1. Back up your existing VMMaker configuration and exported modes.
+2. Confirm VMMaker is configured for the `arcade_15` preset.
+3. Review the candidate mode commands. Do not install blindly.
+4. Add/test one mode at a time using VMMaker's command-line `mode add` syntax.
+5. Verify actual horizontal frequency, vertical refresh, sync polarity, centering,
+   and visible geometry with Arcade OSD / appropriate measurement equipment.
+6. Test first on a known-compatible 15 kHz arcade monitor or a protected test setup.
+   Consumer CRTs differ; some will not lock to every arcade_15 timing.
+7. For each game, determine the actual PC build's render target at runtime. Use
+   game settings, engine configuration, logs, or frame capture; do not infer it
+   from screenshots, sprite sizes, Steam artwork, or aspect ratio alone.
+8. Disable OS desktop scaling / compositor scaling where applicable. Use a
+   nearest-neighbour, integer-preserving path only when the game cannot output
+   its target resolution directly. Confirm that no scaling occurs.
+
+DATA QUALITY
+------------
+- "Community-reported" means a community list reported the resolution; treat it
+  as a candidate, not a primary-source confirmation.
+- "Unverified" means the exact Windows/Linux PC framebuffer was not confirmed.
+- "N/A" identifies games that are not strict 2D pixel-framebuffer candidates.
+- Some games have dynamic resolution, configurable UI scaling, mixed 2D/3D
+  rendering, or different internal and display resolutions.
+- This is a research seed, not a claim that every popular PC 2D game is covered.
+
+SOURCES / TECHNICAL REFERENCES
+------------------------------
+CRT Emudriver / VMMaker arcade_15 range and command context:
+  https://forum.arcadecontrols.com/index.php?topic=141855.160
+  https://forum.arcadecontrols.com/index.php?topic=116023.0
+  https://geedorah.com/eiusdemmodi/forum/viewtopic.php?id=46
+VMMaker `mode add` example:
+  https://forum.arcadecontrols.com/index.php?topic=156804.0
+Community-reported game resolution list:
+  https://www.reddit.com/r/PixelArt/comments/lmqch1/good_resolutions_for_pixel_art_games/
+Supplementary resolution discussion:
+  https://blakecrosley.com/blog/pixel-art-world-on-iphone
+
+SAFETY
+------
+No modeline can be guaranteed safe for every consumer CRT merely because it falls
+inside an arcade_15 range. The preset is designed around an arcade 15.7 kHz monitor
+envelope. Consumer TV chassis, RGB/component/composite interfaces, sync separators,
+GPU DACs, and driver revisions can change what is accepted. Do not exceed the
+television manufacturer's scan limits. Stop if the image rolls, collapses, or the
+set makes abnormal noises.
