@@ -2,68 +2,69 @@ CRT Game Database
 Find modern PC games that work on CRT displays — and learn how to configure them.
 
 Browse the game catalog · Create a VMMaker INI · Community submissions (coming soon)
-Community submissions are not open yet. The link above points to the repository's Issues area as a placeholder; a structured submission and review workflow will be added later. Please do not assume a new Issue will automatically become a database entry.
+Community submissions are not open yet. The submissions link currently points to GitHub Issues as a placeholder. New Issues are not automatically added to the database.
 
 What is this project?
-CRT Game Database is a free, public, community-oriented reference for playing PC 2D, pixel-art, and retro-style games on CRT televisions and monitors, with an emphasis on 15 kHz consumer CRTs, CRT Emudriver, and VMMaker.
+CRT Game Database is a free, public reference for playing PC 2D, pixel-art, and retro-style games on CRT televisions and monitors, with an emphasis on 15 kHz consumer CRTs, CRT Emudriver, and VMMaker.
 
-The database brings together reported CRT display modes, refresh rates, original community sources, and — where documented — game-specific setup instructions. It aims to answer two practical questions:
+The database combines community-reported CRT resolutions, refresh rates, original sources, and game-specific setup instructions where available. It helps answer two questions:
 1. What resolution and refresh rate should I try for this game?
-2. What configuration, utilities, or workarounds might be needed to get it displaying correctly?
-The current catalog contains 316 indexed games and 261 game records with CRT mode reports (November 2026 snapshot). These counts will change as the database grows.
+2. What utilities, configuration, or workarounds might be needed?
+The November 2026 snapshot contains 316 indexed games and 261 game records with CRT mode reports. Counts may change as the catalog grows.
 How to use the website
 1. Find a game
-Open the game catalog. Search by title or resolution, or use the filters to narrow the results. Select a game to open its compatibility record.
+Open the game catalog. Search by title or resolution, apply filters, and select a game to view its compatibility record.
 2. Read the compatibility record
-A game record may include:
-- Reported CRT output resolution and refresh rate — what a community contributor used or recommended.
-- Native render resolution — shown only when supported by evidence; it is not automatically the same as the reported display mode.
-- Scan type and compatibility notes — progressive, interlaced, and other caveats where known.
-- Source links — so you can examine the original report.
-- Setup & Compatibility guide — when available, instructions for tools such as CRU or Special K, tested configurations, and known issues.
-Example: Bloodstained: Curse of the Moon 2 has a community-reported 426×240 at 60 Hz display mode. A documented local configuration uses CRU for the custom mode and Special K for display/fullscreen handling, with a working refresh near 59.840 Hz. This is one tested approach, not a claim that every system requires those tools.
-3. Export modes for the games you own
+A record may include:
+- Reported CRT output resolution and refresh rate: What a community contributor used or recommended.
+- Native render resolution: Shown only when supported by evidence; it is not automatically the same as the reported display mode.
+- Scan type and compatibility notes: Progressive, interlaced, and other caveats where known.
+- Source links: Original community reports for further investigation.
+- Setup & Compatibility guides: Documented tools, configuration steps, tested setups, and known issues when available.
+Example — Bloodstained: Curse of the Moon 2: A community report lists 426×240 at 60 Hz. One locally tested configuration uses CRU for the custom display mode and Special K for display/fullscreen handling, with a working refresh near 59.840 Hz. This is one working method, not proof that all systems require those tools.
+3. Export resolutions for your games
 Open the VMMaker INI exporter.
-1. Choose Selected games only and check the games you want, or choose All games.
+1. Choose Selected games only and check the titles you want, or choose All games.
 2. Optionally include the existing super-resolution and console baseline.
-3. Download the VMMaker user-mode INI.
-4. Download the review CSV to inspect entries that need special handling (for example, widths not divisible by eight, missing refresh rates, or unusually tall progressive modes).
-5. Load the INI into VMMaker and inspect its generated timings before installing or using them.
-The exporter deduplicates identical mode requests and preserves reported refresh rates; it does not generate guaranteed-safe timings for every CRT. Some custom widths may need CRU instead of VMMaker.
-4. Follow setup guides when needed
-Some games can select an appropriate display mode directly. Others need custom resolutions, fullscreen adjustments, or third-party utilities. Where available, open Setup & Compatibility in the game's details to follow a documented method. Different contributors may have different working methods for the same game.
+3. Click Download VMMaker INI.
+4. Use Download review CSV to inspect entries requiring manual attention, such as non-8-aligned widths or missing refresh rates.
+5. Import the INI into VMMaker and inspect generated timings before installing or using them.
+The exporter deduplicates identical requests and preserves reported refresh rates. It does not guarantee that every generated mode is safe or compatible with every CRT. Some unusual widths may need CRU instead.
+4. Follow a setup guide when needed
+Some games support the desired resolution directly. Others need custom resolutions, fullscreen adjustments, or utilities such as Special K. When a guide exists, open the game's Setup & Compatibility section. Multiple working methods may be documented for the same game.
 Community contributions — coming soon
-We plan to accept new games, CRT compatibility reports, corrections, and setup guides through a structured submission process. Proposed submissions will be reviewed before being included in the public database.
+We plan to accept new game reports, corrections, tested CRT configurations, and setup guides through a moderated submission process. Reports will be reviewed before inclusion in the public database.
 
-A useful report will identify the game and PC version, resolution, refresh rate, scan type, CRT and GPU, utilities or configuration steps, observed results, and supporting evidence where possible.
+Useful reports should include the game and PC version, resolution, refresh rate, scan type, CRT and GPU, setup utilities, results, and supporting evidence where possible.
 
-Submission area — placeholder (not accepting reports yet)
+Community submission area — placeholder
 Important accuracy and safety notes
-- Community-reported mode ≠ verified native framebuffer resolution. A usable CRT output resolution does not by itself prove 1:1 pixel mapping.
-- Reports come from different hardware and display setups. A mode reported as working elsewhere may not work on your CRT.
-- A VMMaker user-mode INI is a list of requested resolutions, not a list of validated modeline timings. VMMaker may adjust refresh rates to meet the selected monitor preset.
-- Interlaced output is not equivalent to progressive 240p; verify the actual scan mode.
-- Check timings and your CRT's capabilities before applying changes. Do not assume that every mode in a community report is safe for every 15 kHz television.
-The historical community source is the ArcadeControls CRT Emudriver compatibility thread. The archive also contains research entries that need further verification.
-Project files and technical information
+- Community-reported CRT mode ≠ verified native framebuffer resolution. A usable output mode does not by itself prove 1:1 pixel mapping.
+- Hardware varies. A mode reported as working on one setup may not work on another CRT.
+- VMMaker INI files contain mode requests, not validated modeline timings. VMMaker may adjust refresh rates to fit the selected monitor preset.
+- 480i is not 240p. Interlaced and progressive output should not be treated as equivalent.
+- Verify timings and your CRT's capabilities before applying changes.
+The historical source includes the ArcadeControls CRT Emudriver compatibility thread. Some catalog entries remain research candidates rather than independently verified results.
+Project files
 File	Purpose
-index.html, app.js, styles.css	Searchable game catalog and interface
-data/games.json	Primary catalog and community-report data
+index.html, app.js, styles.css	Searchable catalog and interface
+data/games.json	Primary catalog and community reports
 data/games.csv	Spreadsheet-friendly catalog export
-exporter.html	Select games and export VMMaker user-mode INI files
-setup-guides.js, setup-guides.json	Optional game-specific setup guides and interface
+exporter.html	Selected-game and full-library VMMaker INI exports
+setup-guides.js, setup-guides.json	Game-specific setup guides
 
 
-This is a static website hosted with GitHub Pages. To run it locally, serve the repository over HTTP, for example:
+Run locally
+This is a static GitHub Pages website. To run it locally, serve the repository over HTTP:
 python -m http.server 8000
-Then visit http://localhost:8000/. Serving over HTTP is recommended because the website fetches JSON files.
+Then open http://localhost:8000/. Serving over HTTP is recommended because the site fetches JSON data.
 Roadmap
 - [x] Public searchable game catalog
-- [x] Community-reported CRT resolutions and source references
+- [x] Community CRT mode reports and source references
 - [x] Selective and full-library VMMaker INI exporter
 - [x] Initial game-specific setup-guide support
 - [ ] More verified native framebuffer resolutions and tested configurations
-- [ ] Community submission forms and moderation queue
-- [ ] Expanded setup guides and troubleshooting notes
+- [ ] Moderated community submissions
+- [ ] Expanded troubleshooting and setup guides
 - [ ] Optional launcher integration, including Playnite
-CRT Game Database is a community research project. Its goal is to make CRT PC gaming easier to reproduce, while keeping reported compatibility separate from verified technical facts.
+CRT Game Database is a community research project intended to make CRT PC gaming easier to reproduce while keeping reported compatibility distinct from verified technical facts.
