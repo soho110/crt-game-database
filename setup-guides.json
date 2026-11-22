@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "guides": [
+    {
+      "gameTitle": "Bloodstained: Curse of the Moon 2",
+      "difficulty": "Advanced",
+      "verification": "Locally tested by database maintainer",
+      "methods": [
+        {
+          "id": "bloodstained2-specialk-cru",
+          "name": "CRT Emudriver + CRU + Special K",
+          "summary": "Working configuration for a 15 kHz consumer CRT using a custom 426×240 display mode.",
+          "reportedOutput": {"width": 426, "height": 240, "refreshHz": 59.84, "scan": "progressive"},
+          "utilities": [
+            {"name": "CRU (Custom Resolution Utility)", "role": "Used to configure the exact 426×240 CRT display mode", "requirement": "Used in this tested method"},
+            {"name": "Special K", "role": "Used to configure the game's display/fullscreen behavior", "requirement": "Used in this tested method"},
+            {"name": "CRT Emudriver", "role": "Provides low-resolution CRT output on the supported Radeon", "requirement": "Used in this tested method"}
+          ],
+          "steps": [
+            "Configure and verify a stable 426×240 custom mode at approximately 59.840 Hz on the CRT-connected Radeon using CRU.",
+            "Launch the game with Special K and configure its display/fullscreen behavior to use the CRT output.",
+            "Select the 426×240 mode where supported, then confirm the game renders on the CRT without unintended scaling or cropping.",
+            "If the game does not use the desired output, review the Windows display assignment and Special K configuration before changing CRT timings."
+          ],
+          "knownIssues": [
+            "426 pixels is not divisible by eight; the VMMaker exporter normally flags this mode for manual CRU review.",
+            "The community listing reports 426×240 at 60 Hz, while the maintainer's working CRU mode is approximately 59.840 Hz."
+          ],
+          "testedConfiguration": {
+            "crt": "Toshiba 14AF42",
+            "gpu": "Radeon R5 340 (CRT Emudriver)",
+            "operatingSystem": "Windows (version not documented)",
+            "additionalDisplay": "Separate Nvidia-driven main monitor"
+          },
+          "sourceNote": "Maintainer-tested setup; precise Special K menu values have not yet been documented.",
+          "sourceUrl": ""
+        }
+      ]
+    }
+  ]
+}
