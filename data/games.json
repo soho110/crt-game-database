@@ -11241,6 +11241,22 @@
     ]
   },
   {
+    "title": "Volvy's Adventure: Reslimed",
+    "year": null,
+    "nativeResolution": "480x270",
+    "nativeEvidence": "User-reported 270p internal rendering; not independently verified. Reported 360x270 at 4:3.",
+    "crtResolution": null,
+    "refreshHz": null,
+    "scan": "Unconfirmed",
+    "source": "User-submitted native resolution information",
+    "sourceUrl": "",
+    "notes": "Reported native 270p height with aspect-dependent width: 480x270 at 16:9, 360x270 at 4:3. Existing VMMaker generated mode 480x270 at 55.67 Hz (16.20 kHz), but game has not been tested on a CRT. Do not treat this timing as game compatibility confirmation.",
+    "genres": [
+      "2D / pixel-art"
+    ],
+    "status": "Needs verification"
+  },
+  {
     "title": "VVVVVV",
     "year": 2010,
     "nativeResolution": null,
