@@ -5393,6 +5393,23 @@
     ]
   },
   {
+    "title": "Lone Fungus: Melody of Spores",
+    "year": 2025,
+    "nativeResolution": "320x180",
+    "nativeEvidence": "Developer-reported native resolution; user confirmed CRT output at 320x180.",
+    "crtResolution": "320x180",
+    "refreshHz": 60,
+    "scan": "Progressive",
+    "source": "Firsthand user CRT test",
+    "sourceUrl": "",
+    "notes": "Tested on a Toshiba consumer CRT using CRT Emudriver/VMMaker. Requested 60 Hz; actual generated refresh not measured. User observed 60 FPS, normal image and no judder. No Special K required; no additional utilities reported. Photographic evidence supplied.",
+    "genres": [
+      "2D / pixel-art",
+      "Metroidvania"
+    ],
+    "status": "User verified"
+  },
+  {
     "title": "Loop Hero",
     "year": 2021,
     "nativeResolution": null,
